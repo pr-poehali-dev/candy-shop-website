@@ -2,9 +2,12 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
 import LanguageSwitcher, { useLanguage } from "@/components/LanguageSwitcher";
+import { useCart } from "@/contexts/CartContext";
 
 const Header: React.FC = () => {
   const { t } = useLanguage();
+  const { getTotalItems } = useCart();
+  const totalItems = getTotalItems();
 
   return (
     <header className="bg-white shadow-sm border-b">
@@ -48,7 +51,7 @@ const Header: React.FC = () => {
               <Icon name="ShoppingCart" size={16} />
               <span className="hidden sm:inline">{t("cart")}</span>
               <span className="bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                0
+                {totalItems}
               </span>
             </Button>
           </div>

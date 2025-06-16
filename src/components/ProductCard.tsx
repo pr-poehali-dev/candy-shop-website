@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
 import { useLanguage } from "@/components/LanguageSwitcher";
+import { useCart } from "@/contexts/CartContext";
+import { toast } from "sonner";
 
 interface ProductCardProps {
   id: string;
@@ -15,6 +17,7 @@ interface ProductCardProps {
 }
 
 const ProductCard: React.FC<ProductCardProps> = ({
+  id,
   name,
   nameEn,
   price,
@@ -23,6 +26,20 @@ const ProductCard: React.FC<ProductCardProps> = ({
   categoryEn,
 }) => {
   const { t, language } = useLanguage();
+  const { addToCart } = useCart();
+
+  const handleAddToCart = () => {
+    addToCart({
+      id,
+      name,
+      nameEn,
+      price,
+      image,
+      category,
+      categoryEn,
+    });
+    toast.success(t("itemAdded"));
+  };
 
   return (
     <Card className="group hover:shadow-lg transition-all duration-300 hover:scale-105">
@@ -46,7 +63,11 @@ const ProductCard: React.FC<ProductCardProps> = ({
 
           <div className="flex items-center justify-between">
             <span className="text-lg font-bold text-red-600">{price} ₽</span>
-            <Button size="sm" className="bg-red-500 hover:bg-red-600">
+            <Button
+              size="sm"
+              className="bg-red-500 hover:bg-red-600"
+              onClick={handleAddToCart}
+            >
               <Icon name="Plus" size={14} />
             </Button>
           </div>

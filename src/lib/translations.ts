@@ -6,6 +6,10 @@ export const translations = {
     promotions: "Акции",
     contacts: "Контакты",
     cart: "Корзина",
+    cartCount: "товаров",
+    cartTotal: "Итого",
+    cartEmpty: "Корзина пуста",
+    itemAdded: "Товар добавлен в корзину",
 
     // Hero section
     heroTitle: "Сладкие подарки для каждого праздника",
@@ -41,6 +45,10 @@ export const translations = {
     promotions: "Promotions",
     contacts: "Contacts",
     cart: "Cart",
+    cartCount: "items",
+    cartTotal: "Total",
+    cartEmpty: "Cart is empty",
+    itemAdded: "Item added to cart",
 
     // Hero section
     heroTitle: "Sweet gifts for every holiday",
